@@ -23,6 +23,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+#include <stdlib.h>
 
 /* USER CODE END Includes */
 
@@ -50,6 +51,8 @@ uint8_t M;
 uint8_t tx_data[1];
 uint8_t rx_test[8];
 
+float test1,test2,max_steps;
+int count_test;
 
 /* USER CODE END PV */
 
@@ -106,31 +109,64 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-		if(rx_test[0] == '0'){
-			M = 0;// 0 CCW, 1 CW
-		}else if(rx_test[0] == '1'){
-			M = 1;// 0 CCW, 1 CW
-		}	
-    
-    Qa = Da;
-    Qb = Db;
-    Da = Qb ^ M;
-    Qa1 = !Qa;
-    Db = Qa1 ^ M;
 
-		HAL_GPIO_WritePin(GPIOA,GPIO_PIN_12,Qa);//    PA12 digitalWrite OUT1 GREEN
-		HAL_GPIO_WritePin(GPIOA,GPIO_PIN_11,!Qa);//   PA11 digitalWrite OUT2 BLACK
-		HAL_GPIO_WritePin(GPIOB,GPIO_PIN_12,Qb);//    PB12 digitalWrite OUT3 BLUE
-		HAL_GPIO_WritePin(GPIOB,GPIO_PIN_11,!Qb);//   PB11 digitalWrite OUT4 RED
 		
-		HAL_Delay(10);
-		
-		//Double Bluetooth link HC-05 STM32-MASTER Arduino-SLAVE
-		
-		//HAL_UART_Receive(&huart4,rx_test,8,100);
-		//printf(">> %s \n\r",rx_test);
+	//Double Bluetooth link HC-05 STM32-MASTER Arduino-SLAVE
+			
+			HAL_UART_Receive(&huart4,rx_test,8,500);
+			//printf(">> %s \n\r",rx_test);
+			
+			test1 = atof(rx_test);
+			
+			if(count_test==0){		
+			
+				if(test1<0){
+					M = 0;//CCW
+					test2 = fabs(test1);
+					max_steps = (test2*400)/360;
+					for(int step=0;step<max_steps;step++){
+						Qa = Da;
+						Qb = Db;
+						Da = Qb ^ M;
+						Qa1 = !Qa;
+						Db = Qa1 ^ M;
 
-  }
+						HAL_GPIO_WritePin(GPIOA,GPIO_PIN_12,Qa);//    PA12 digitalWrite OUT1 GREEN
+						HAL_GPIO_WritePin(GPIOA,GPIO_PIN_11,!Qa);//   PA11 digitalWrite OUT2 BLACK
+						HAL_GPIO_WritePin(GPIOB,GPIO_PIN_12,Qb);//    PB12 digitalWrite OUT3 BLUE
+						HAL_GPIO_WritePin(GPIOB,GPIO_PIN_11,!Qb);//   PB11 digitalWrite OUT4 RED
+						
+						HAL_Delay(10);
+					}
+				}else if(test1>0){
+					M = 1;//CW
+					max_steps = (test2*400)/360;
+					test2 = fabs(test1);
+					for(int step=0;step<max_steps;step++){
+						Qa = Da;
+						Qb = Db;
+						Da = Qb ^ M;
+						Qa1 = !Qa;
+						Db = Qa1 ^ M;
+
+						HAL_GPIO_WritePin(GPIOA,GPIO_PIN_12,Qa);//    PA12 digitalWrite OUT1 GREEN
+						HAL_GPIO_WritePin(GPIOA,GPIO_PIN_11,!Qa);//   PA11 digitalWrite OUT2 BLACK
+						HAL_GPIO_WritePin(GPIOB,GPIO_PIN_12,Qb);//    PB12 digitalWrite OUT3 BLUE
+						HAL_GPIO_WritePin(GPIOB,GPIO_PIN_11,!Qb);//   PB11 digitalWrite OUT4 RED
+						
+						HAL_Delay(10);
+					}
+			}
+		}
+	//		if(rx_test[0] == '0'){
+	//			M = 0;// 0 CCW, 1 CW
+	//		}else if(rx_test[0] == '1'){
+	//			M = 1;// 0 CCW, 1 CW
+	//		}	
+			
+			
+
+		}
   /* USER CODE END 3 */
 }
 
@@ -248,6 +284,16 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
+//void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
+//{
+//  /* Prevent unused argument(s) compilation warning */
+//	HAL_UART_Receive(&huart4,rx_test,8,500);
+//  printf(">> %s \n\r",rx_test);
+
+//  /* NOTE : This function should not be modified, when the callback is needed,
+//            the HAL_UART_RxCpltCallback can be implemented in the user file.
+//   */
+//}
 
 /* USER CODE END 4 */
 
