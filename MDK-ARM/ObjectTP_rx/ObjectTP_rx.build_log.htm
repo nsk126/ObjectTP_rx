@@ -22,59 +22,35 @@ Dialog DLL:      TCM.DLL V1.36.1.0
  
 <h2>Project:</h2>
 C:\Users\Suresh Krishna\Documents\Exp1\ObjectTP_rx\MDK-ARM\ObjectTP_rx.uvprojx
-Project File Date:  05/02/2019
+Project File Date:  05/07/2019
 
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 6 (build 750)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'ObjectTP_rx'
-assembling startup_stm32f303xe.s...
-compiling stm32f3xx_it.c...
 compiling main.c...
-../Src/main.c(119): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "const char *"
-  			test1 = atof(rx_test);
-../Src/main.c(125): warning:  #223-D: function "fabs" declared implicitly
-  					test2 = fabs(test1);
+../Src/main.c(121): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "const char *"
+  		test1 = atof(rx_buff);		
+../Src/main.c(133): warning:  #188-D: enumerated type mixed with another type
+  				HAL_GPIO_WritePin(GPIOA,GPIO_PIN_12,Qa);//    PA12 digitalWrite OUT1 GREEN
 ../Src/main.c(134): warning:  #188-D: enumerated type mixed with another type
-  						HAL_GPIO_WritePin(GPIOA,GPIO_PIN_12,Qa);//    PA12 digitalWrite OUT1 GREEN
+  				HAL_GPIO_WritePin(GPIOA,GPIO_PIN_11,!Qa);//   PA11 digitalWrite OUT2 BLACK
 ../Src/main.c(135): warning:  #188-D: enumerated type mixed with another type
-  						HAL_GPIO_WritePin(GPIOA,GPIO_PIN_11,!Qa);//   PA11 digitalWrite OUT2 BLACK
+  				HAL_GPIO_WritePin(GPIOB,GPIO_PIN_12,Qb);//    PB12 digitalWrite OUT3 BLUE
 ../Src/main.c(136): warning:  #188-D: enumerated type mixed with another type
-  						HAL_GPIO_WritePin(GPIOB,GPIO_PIN_12,Qb);//    PB12 digitalWrite OUT3 BLUE
-../Src/main.c(137): warning:  #188-D: enumerated type mixed with another type
-  						HAL_GPIO_WritePin(GPIOB,GPIO_PIN_11,!Qb);//   PB11 digitalWrite OUT4 RED
-../Src/main.c(144): warning:  #223-D: function "fabs" declared implicitly
-  					test2 = fabs(test1);
+  				HAL_GPIO_WritePin(GPIOB,GPIO_PIN_11,!Qb);//   PB11 digitalWrite OUT4 RED
 ../Src/main.c(152): warning:  #188-D: enumerated type mixed with another type
-  						HAL_GPIO_WritePin(GPIOA,GPIO_PIN_12,Qa);//    PA12 digitalWrite OUT1 GREEN
+  				HAL_GPIO_WritePin(GPIOA,GPIO_PIN_12,Qa);//    PA12 digitalWrite OUT1 GREEN
 ../Src/main.c(153): warning:  #188-D: enumerated type mixed with another type
-  						HAL_GPIO_WritePin(GPIOA,GPIO_PIN_11,!Qa);//   PA11 digitalWrite OUT2 BLACK
+  				HAL_GPIO_WritePin(GPIOA,GPIO_PIN_11,!Qa);//   PA11 digitalWrite OUT2 BLACK
 ../Src/main.c(154): warning:  #188-D: enumerated type mixed with another type
-  						HAL_GPIO_WritePin(GPIOB,GPIO_PIN_12,Qb);//    PB12 digitalWrite OUT3 BLUE
+  				HAL_GPIO_WritePin(GPIOB,GPIO_PIN_12,Qb);//    PB12 digitalWrite OUT3 BLUE
 ../Src/main.c(155): warning:  #188-D: enumerated type mixed with another type
-  						HAL_GPIO_WritePin(GPIOB,GPIO_PIN_11,!Qb);//   PB11 digitalWrite OUT4 RED
-../Src/main.c: 11 warnings, 0 errors
-compiling stm32f3xx_hal_msp.c...
-compiling stm32f3xx_hal_tim_ex.c...
-compiling stm32f3xx_hal_tim.c...
-compiling stm32f3xx_hal_uart.c...
-compiling stm32f3xx_hal_uart_ex.c...
-compiling stm32f3xx_hal.c...
-compiling stm32f3xx_hal_rcc.c...
-compiling stm32f3xx_hal_gpio.c...
-compiling stm32f3xx_hal_dma.c...
-compiling stm32f3xx_hal_rcc_ex.c...
-compiling stm32f3xx_hal_cortex.c...
-compiling stm32f3xx_hal_pwr.c...
-compiling stm32f3xx_hal_pwr_ex.c...
-compiling stm32f3xx_hal_flash.c...
-compiling stm32f3xx_hal_flash_ex.c...
-compiling stm32f3xx_hal_i2c.c...
-compiling stm32f3xx_hal_i2c_ex.c...
-compiling system_stm32f3xx.c...
+  				HAL_GPIO_WritePin(GPIOB,GPIO_PIN_11,!Qb);//   PB11 digitalWrite OUT4 RED
+../Src/main.c: 9 warnings, 0 errors
 linking...
-Program Size: Code=8732 RO-data=556 RW-data=68 ZI-data=1140  
+Program Size: Code=9008 RO-data=556 RW-data=76 ZI-data=1140  
 FromELF: creating hex file...
-"ObjectTP_rx\ObjectTP_rx.axf" - 0 Error(s), 11 Warning(s).
+"ObjectTP_rx\ObjectTP_rx.axf" - 0 Error(s), 9 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -97,7 +73,7 @@ Package Vendor: Keil
 <h2>Collection of Component Files used:</h2>
 
    * Component: ARM::CMSIS:CORE:5.1.2
-Build Time Elapsed:  00:01:16
+Build Time Elapsed:  00:00:10
 </pre>
 </body>
 </html>

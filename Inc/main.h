@@ -58,6 +58,10 @@ void Error_Handler(void);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
+#define BLUE_TX_Pin GPIO_PIN_10
+#define BLUE_TX_GPIO_Port GPIOC
+#define BLUE_RX_Pin GPIO_PIN_11
+#define BLUE_RX_GPIO_Port GPIOC
 /* USER CODE BEGIN Private defines */
 
 /* USER CODE END Private defines */
